@@ -55,7 +55,7 @@ class CustomBlockDemo extends BlockBase {
     );
     $form['ip_address_upto'] = array(
       '#type' => 'textfield',
-      '#title' => t('To'),
+      '#title' => t('Restrict IP Address Range - To'),
       '#default_value' => isset($config['ip_address_upto']) ? $config['ip_address_upto'] : '',
     );
     return $form;
@@ -67,10 +67,17 @@ class CustomBlockDemo extends BlockBase {
     $ip_address_to = $form_state->getValue('ip_address_upto');
     // Validate the IP address if the field value exists.
     if (!empty($ip_address) && filter_var($ip_address, FILTER_VALIDATE_IP) == FALSE) {
-      $form_state->setErrorByName('ip_address', t('IP Address is invalid.'));
+      $form_state->setErrorByName('ip_address', t('Restrict IP Address Range - From field value is invalid.'));
     }
-    if (!empty($ip_address_to) && filter_var($ip_address_to, FILTER_VALIDATE_IP) == FALSE) {
-      $form_state->setErrorByName('ip_address_upto', t('IP Address Range To is invalid.'));
+    elseif (!empty($ip_address_to) && filter_var($ip_address_to, FILTER_VALIDATE_IP) == FALSE) {
+      $form_state->setErrorByName('ip_address_upto', t('Restrict IP Address Range - To field value is invalid.'));
+    }
+    // Check if both the IP range fields are set if either of the field has values.
+    elseif(!empty($ip_address) && empty($ip_address_to)) {
+      $form_state->setErrorByName('ip_address_upto', t('Restrict IP Address Range - To field is required.'));
+    }
+    elseif(empty($ip_address) && !empty($ip_address_to)) {
+      $form_state->setErrorByName('ip_address', t('Restrict IP Address Range - From field is required.'));
     }
   }
 

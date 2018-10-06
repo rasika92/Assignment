@@ -6,3 +6,7 @@
 .block-wrapper {
   padding: 10px;
 }
+
+.block-title {
+  font-weight: 700;
+}
