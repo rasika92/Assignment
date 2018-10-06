@@ -1,0 +1,13 @@
+custom_block.hack_number_form:
+  path: /hack-number-form
+  defaults:
+    _form: 'Drupal\custom_block\Form\HackNumberForm'
+  requirements:
+   _permission: 'access content'
+
+custom_block.dictionary_form:
+  path: /dictionary
+  defaults:
+    _form: 'Drupal\custom_block\Form\Dictionary'
+  requirements:
+   _permission: 'access content'

@@ -1,0 +1,5 @@
+name: Custom Block
+description: Custom configuration block
+package: Custom
+core: 8.x
+type: module
