@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Hack Number</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <form action="/hacknumber/hacknumbersubmit.php" method="post">
+      <label>String 1</label><br>
+      <input type="text" name="string1" required><br>
+      <label>String 2</label><br>
+      <input type="text" name="string2" required><br>
+      <label>Character</label><br>
+      <input type="radio" name="character" value="yes" required>Y<br>
+      <input type="radio" name="character" value="no" required>N<br>
+      <label>String Position</label><br>
+      <input type="number" name="initial_position" min="0" required><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
