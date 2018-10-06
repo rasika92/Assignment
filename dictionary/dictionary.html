@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Dictionary</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="dictionary.js"></script>
+    <style>
+      #add-words,
+      #add-queries {
+        display: none;
+      }
+      sup { color: red }
+    </style>
+  </head>
+  <body>
+    <form action="/dictionary/searchdictionary.php" method="post">
+      <label>No. of words</label><sup>*</sup><br>
+      <input type="number" name="no_of_words" min="1" required><br>
+      <label>Word Length</label><sup>*</sup><br>
+      <input type="number" name="word_length" min="1" required><br>
+
+      <div id="add-words">
+        <div id="word-wrapper">
+          <div class="words-input-wrapper">
+            <label>Enter Word 1</label><sup>*</sup><br>
+            <input type="text" name="word1" required><br>
+          </div>
+        </div>
+        <button type="button" class="add-more-words">Add More Words</button>
+      </div>
+
+      <label>No. of queries</label><sup>*</sup><br>
+      <input type="number" name="no_of_queries" min="1" required><br>
+      <div id="add-queries">
+        <div id="query-wrapper">
+          <div class="query-input-wrapper">
+            <label>Enter Query 1</label><sup>*</sup><br>
+            <input type="text" name="query1" required><br>
+          </div>
+        </div>
+        <button type="button" class="add-more-queries">Add More Queries</button>
+      </div>
+
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
