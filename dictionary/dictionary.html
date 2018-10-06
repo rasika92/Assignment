@@ -10,10 +10,15 @@
       #add-queries {
         display: none;
       }
-      sup { color: red }
+      sup,
+      .add-more-words-error,
+      .add-more-queries-error {
+        color: red
+      }
     </style>
   </head>
   <body>
+    <div class="instructions"><strong>All fields marked as * are mandatory.</strong></div>
     <form action="/dictionary/searchdictionary.php" method="post">
       <label>No. of words</label><sup>*</sup><br>
       <input type="number" name="no_of_words" min="1" required><br>

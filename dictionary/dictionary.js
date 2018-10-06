@@ -3,10 +3,14 @@ $(document).ready(function () {
   var qcount = 1;
 
   $('.add-more-words').on('click', function () {
+    $('.add-more-words-error').remove();
     var no_of_words = $('input[name=no_of_words]').val();
     var word_length = $('input[name=word_length]').val();
     var data = {labeltext: 'Enter Word', no_of_words: no_of_words, word_length: word_length, operation_type: 'add_word', div_class: 'words-input-wrapper', wrapper_id: 'word-wrapper'};
     add('text', 'word', data);
+    if (wcount > no_of_words) {
+      $(this).after('<div class="add-more-words-error">You can add only ' + no_of_words + ' words as per the given input.</div>');
+    }
   });
 
   $('input[name=no_of_words]').on('keyup', function () {
@@ -67,6 +71,7 @@ $(document).ready(function () {
       element.setAttribute("type", type);
       element.setAttribute("name", name + counter);
       element.setAttribute("maxlength", data.word_length);
+      element.setAttribute("required", '');
       newDiv.appendChild(element);
 
       var linebreak = document.createElement("br");
@@ -75,7 +80,7 @@ $(document).ready(function () {
       var label = document.createElement("label");
       label.innerHTML = data.labeltext + ' ' + counter;
       newDiv.insertBefore(label, element);
-      label.after(linebreak);
+      $('<sup>*</sup><br/>').insertAfter(label);
     }
   }
 
@@ -92,9 +97,13 @@ $(document).ready(function () {
   });
 
   $('.add-more-queries').on('click', function () {
+    $('.add-more-queries-error').remove();
     var no_of_queries = $('input[name=no_of_queries]').val();
     var word_length = $('input[name=word_length]').val();
     var data = {labeltext: 'Enter Query', no_of_queries: no_of_queries, word_length: word_length, operation_type: 'add_query', div_class: 'query-input-wrapper', wrapper_id: 'query-wrapper'};
     add('text', 'query', data);
+    if (qcount > no_of_queries) {
+      $(this).after('<div class="add-more-queries-error">You can add only ' + no_of_queries + ' queries as per the given input.</div>');
+    }
   });
 });
