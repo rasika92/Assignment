@@ -7,6 +7,9 @@ $no_of_words_in_dictionary = $_POST['no_of_words'];
 $word_length = $_POST['word_length'];
 $no_of_queries = $_POST['no_of_queries'];
 for($i=1;$i<=$no_of_words_in_dictionary;$i++) {
+  if (strlen($_POST["word$i"]) < $word_length || strlen($_POST["word$i"]) > $word_length) {
+    echo 'The word length for ' .$_POST["word$i"] . ' does not match the length given in input';exit;
+  }
   $words[] = $_POST["word$i"];
 }
 for($j=1;$j<=$no_of_queries;$j++) {
